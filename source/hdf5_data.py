@@ -171,24 +171,26 @@ class HDF5Data:
         set file name generator is used.
 
         kwargs:
-            name (string) : default is 'data'
+            name (string) : default is 'data' (%timemark is interpreted as its timemark)
         """
 
         # FIXME: the name generation here is a bit nasty
         name = kwargs.get('name', 'data')
         name = data.Data._data_list.new_item_name(self, name)
         self._name = name
+        filepath = kwargs.get('filepath', None)
 
-        filepath = kwargs.get('filepath, None')
+        self._localtime = time.localtime()
+        self._timestamp = time.asctime(self._localtime)
+        self._timemark = time.strftime('%H%M%S', self._localtime)
+        self._datemark = time.strftime('%Y%m%d', self._localtime)
+
         if filepath:
             self._filepath = filepath
-
         else:
-            self._localtime = time.localtime()
-            self._timestamp = time.asctime(self._localtime)
-            self._timemark = time.strftime('%H%M%S', self._localtime)
-            self._datemark = time.strftime('%Y%m%d', self._localtime)
             self._filepath =  self._filename_generator.new_filename(self)
+
+        self._filepath = self._filepath.replace("%timemark", self._timemark)
 
         self._folder, self._filename = os.path.split(self._filepath)
         if not os.path.isdir(self._folder):
