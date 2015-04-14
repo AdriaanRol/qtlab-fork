@@ -1,5 +1,6 @@
 *.pyc
 qtlab.log
+qtlab.cfg
 *.py.cfg
 qtlab.lock
 qtlab.egg-info
