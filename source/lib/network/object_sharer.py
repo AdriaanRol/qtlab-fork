@@ -597,7 +597,7 @@ class SharedObject():
     def __getattr__(self, attr):
         if self.__wrapobj is not None:
             return getattr(self.__wrapobj, attr)
-        raise AttributeError()
+        raise AttributeError('No attribute %s' % attr)
 
     def get_shared_name(self):
         '''Return the shared name of this object.'''
