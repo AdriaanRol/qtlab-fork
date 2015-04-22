@@ -65,7 +65,7 @@ class Script():
 class Scripts():
 
     def __init__(self):
-        self._dirs = ['scripts', ]
+        self._dirs = []
         self._cache = {}
 
     def __repr__(self):
