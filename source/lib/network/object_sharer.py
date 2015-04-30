@@ -597,7 +597,7 @@ class SharedObject():
     def __getattr__(self, attr):
         if self.__wrapobj is not None:
             return getattr(self.__wrapobj, attr)
-        raise AttributeError()
+        raise AttributeError('No attribute %s' % attr)
 
     def get_shared_name(self):
         '''Return the shared name of this object.'''
@@ -711,7 +711,7 @@ class _FunctionCall():
         self._cached_result = None
 
     def __call__(self, *args, **kwargs):
-        cache = self._share_options.get('cache_result', False) 
+        cache = self._share_options.get('cache_result', False)
         if cache and self._cached_result is not None:
             return self._cached_result
 
