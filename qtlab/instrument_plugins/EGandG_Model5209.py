@@ -159,11 +159,11 @@ class EGandG_Model5209(Instrument):
    def do_get_timeconstant_t(self):
       stringval = self._ask("XTC?")
       n = int(stringval)
-      sen = pow(10,(int(n/2)-3+np.log10(3)*mod(n,2)/)
+      sen = pow(10, (int(n/2)-3+np.log10(3)*np.mod(n, 2)/1))
       return sen
 
    def do_set_timeconstant_t(self,val):
       n = np.log10(val)*2.0+5.99
-      if (mod(n,2) > 0.9525) & (mod(n,2) < 1.1):
+      if (np.mod(n, 2) > 0.9525) & (np.mod(n, 2) < 1.1):
           n = n+0.1
       self._write("XTC %d"%n)
