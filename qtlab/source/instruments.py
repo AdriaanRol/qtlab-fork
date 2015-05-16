@@ -206,16 +206,15 @@ class Instruments(SharedGObject):
         return ret
 
     def type_exists(self, typename):
-        #Still need to edit this to be compatible with multiple instrument directories
+
         if _user_instrument_directories != None:
             for user_insdir in _user_instrument_directories:
                 driverfn = os.path.join(user_insdir, '%s.py' % typename)
                 if os.path.exists(driverfn):
                     return os.path.exists(driverfn)
-        else:
-            driverfn = os.path.join(_insdir, '%s.py' % typename)
-            if os.path.exists(driverfn):
-                return True
+        driverfn = os.path.join(_insdir, '%s.py' % typename)
+        if os.path.exists(driverfn):
+            return True
         return False
 
 
