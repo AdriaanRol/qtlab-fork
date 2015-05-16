@@ -15,8 +15,8 @@ from qtlab.source import hdf5_data
 from qtlab.source import instrument
 from qtlab.source import instruments
 from qtlab.source import lib
-from qtlab.source import plot
-from qtlab.source import plot_engines
+# from qtlab.source import plot # Commented out to do a smaller test
+# from qtlab.source import plot_engines
 from qtlab.source import proligix_ethernet
 from qtlab.source import qtclient
 from qtlab.source import qtflow
