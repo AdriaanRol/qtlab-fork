@@ -43,6 +43,11 @@ IF EXIST "%PYTHON_PATH%\scripts\ipython-script.py" (
     GOTO EOF
 )
 
+IF EXIST "%PYTHON_PATH%\scripts\jupyter.exe" (
+    start Console -w "QTLab" -r "/k ipython -i source/qtlab_shell.py -- %*"
+    GOTO EOF
+)
+
 echo Failed to run qtlab.bat
 pause
 :EOF
